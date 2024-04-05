@@ -4,13 +4,16 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ ];
       systems = [ "aarch64-darwin" "x86_64-linux" ];
-      perSystem = { config, self', inputs', pkgs, system, ... }: {
+      perSystem = { config, pkgs, system, ... }: {
         packages = {
           nodejs_6 = pkgs.stdenv.mkDerivation {
             name = "node";
