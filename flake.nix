@@ -12,10 +12,10 @@
       perSystem = { config, self', inputs', pkgs, system, ... }: {
         packages = {
           nodejs_6 = pkgs.stdenv.mkDerivation {
-            name = "nodejs6.17.1";
+            name = "node";
             src = pkgs.fetchurl {
               url = "https://nodejs.org/dist/v6.17.1/node-v6.17.1-darwin-x64.tar.gz";
-              sha256 = "sha256-vTAqaJw8NOK2HYa5feZtJqM1iBoXrwm2oKS7EBnfVuQ=";
+              sha256 = "sha256-gDPgel2nWa8A23NkwjRPEe7/c7UWR9OZJr+jbyExuZA=";
             };
             installPhase = ''
               echo "installing nodejs"
